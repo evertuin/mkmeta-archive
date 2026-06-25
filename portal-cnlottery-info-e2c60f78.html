@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>中国竞彩网 · 资料索引与信息整理 | 简洁博客式</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f0f5f4;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      line-height: 1.7;
+      color: #1d2b2a;
+      padding: 0 1.2rem;
+    }
+
+    .page-wrap {
+      max-width: 780px;
+      margin: 2.8rem auto;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 12px 28px -8px rgba(30, 70, 60, 0.15);
+      padding: 2rem 1.8rem;
+      transition: all 0.2s ease;
+    }
+
+    @media (min-width: 600px) {
+      .page-wrap {
+        padding: 3rem 2.8rem;
+        margin: 3.6rem auto;
+      }
+    }
+
+    /* 网格卡片式点缀 */
+    .article-header {
+      border-bottom: 1px solid #d5e3e0;
+      padding-bottom: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    .article-title {
+      font-size: 1.9rem;
+      font-weight: 650;
+      letter-spacing: -0.01em;
+      color: #0b2d29;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.4rem;
+      font-size: 0.85rem;
+      color: #5c7570;
+      margin-top: 0.4rem;
+    }
+
+    .article-meta span {
+      background: #eaf3f0;
+      padding: 0.1rem 0.8rem;
+      border-radius: 40px;
+      display: inline-block;
+    }
+
+    .guide-deck {
+      background: #f6fbf9;
+      border-left: 5px solid #2d8f7a;
+      padding: 1.2rem 1.4rem;
+      border-radius: 16px;
+      margin: 1.8rem 0;
+      box-shadow: 0 2px 8px rgba(40, 100, 80, 0.06);
+    }
+
+    .guide-deck p {
+      margin-bottom: 0.3rem;
+      color: #1b403a;
+      font-weight: 450;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 2.2rem 0 1.8rem;
+    }
+
+    .grid-card-item {
+      background: #f4faf8;
+      border-radius: 20px;
+      padding: 1rem 0.9rem 1rem 1.1rem;
+      border: 1px solid #daebe6;
+      transition: transform 0.1s ease, box-shadow 0.15s;
+    }
+
+    .grid-card-item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 14px rgba(30, 85, 70, 0.08);
+    }
+
+    .grid-card-item .emoji-marker {
+      font-size: 1.15rem;
+      margin-right: 0.3rem;
+    }
+
+    .grid-card-item h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #0d352f;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .grid-card-item p {
+      font-size: 0.9rem;
+      color: #33544d;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 480px) {
+      .grid-cards {
+        grid-template-columns: 1fr;
+        gap: 0.9rem;
+      }
+
+      .article-title {
+        font-size: 1.6rem;
+      }
+
+      .page-wrap {
+        padding: 1.5rem 1.2rem;
+        border-radius: 24px;
+      }
+    }
+
+    .content-block {
+      margin: 1.6rem 0 1.2rem;
+    }
+
+    .content-block h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 1.5rem 0 0.5rem;
+      color: #0f3a33;
+      border-bottom: 2px solid #bdd9d2;
+      padding-bottom: 0.2rem;
+      display: inline-block;
+    }
+
+    .content-block p {
+      margin: 0.8rem 0;
+      text-align: justify;
+    }
+
+    .callout-note {
+      background: #dff0ec;
+      border-radius: 18px;
+      padding: 1.2rem 1.3rem;
+      margin: 2rem 0 1.2rem;
+      font-size: 0.96rem;
+      color: #09332b;
+      border: 1px solid #b7d4cd;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.5);
+    }
+
+    .callout-note strong {
+      color: #035f4b;
+    }
+
+    .faq-mini {
+      margin: 2rem 0 0.6rem;
+    }
+
+    .faq-item {
+      border-top: 1px solid #d2e2dd;
+      padding: 0.9rem 0;
+    }
+
+    .faq-item:first-child {
+      border-top: none;
+    }
+
+    .faq-q {
+      font-weight: 600;
+      color: #10473e;
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .faq-q::before {
+      content: "▹";
+      color: #298071;
+    }
+
+    .faq-a {
+      padding-left: 1.5rem;
+      font-size: 0.93rem;
+      color: #3e5d56;
+      margin-top: 0.2rem;
+    }
+
+    .site-embed-link {
+      background-color: #e5f3ef;
+      padding: 0.05rem 0.4rem;
+      border-radius: 6px;
+      color: #0d5c49;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 1px solid #8cb9ad;
+      transition: background 0.15s;
+    }
+
+    .site-embed-link:hover {
+      background: #c8e0d9;
+      border-bottom-color: #257a65;
+    }
+
+    .foot-note {
+      border-top: 1px solid #ddebe6;
+      margin-top: 2.2rem;
+      padding-top: 1.1rem;
+      font-size: 0.88rem;
+      color: #58766e;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.6rem;
+    }
+
+    .foot-note a {
+      color: #176654;
+      text-decoration: none;
+      font-weight: 450;
+      border-bottom: 1px dashed #7dafa1;
+    }
+
+    .foot-note a:hover {
+      border-bottom-style: solid;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccdfda;
+      margin: 1.2rem 0;
+    }
+
+    .inline-link-large {
+      background: #e5f2ee;
+      border-radius: 40px;
+      padding: 0.1rem 0.75rem;
+      display: inline-block;
+      font-weight: 500;
+      color: #095546;
+      text-decoration: none;
+      transition: 0.1s;
+    }
+
+    .inline-link-large:hover {
+      background: #c5ddd4;
+    }
+
+    .tag-ghost {
+      display: inline-block;
+      font-size: 0.8rem;
+      background: transparent;
+      border: 1px solid #b4cec5;
+      color: #2e5c52;
+      padding: 0 0.6rem;
+      border-radius: 40px;
+      margin-right: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <div class="article-header">
+    <h1 class="article-title">竞彩资料：索引、结构与常见信息整理</h1>
+    <div class="article-meta">
+      <span>信息梳理 · 2025</span>
+      <span>阅读约 5 分钟</span>
+      <span class="tag-ghost">数据侧重</span>
+    </div>
+  </div>
+
+  <div class="guide-deck">
+    <p>📌 导语：竞彩类信息查阅常面临来源分散、术语不一的问题。本文从资料整理视角出发，聚合常用概念、平台入口及基础规则，力图构造一份简洁的手册式索引。若需直接浏览官方资讯，请参考 <a href="https://portal-cnlottery.com" class="site-embed-link">中国竞彩网</a> 的一手内容。</p>
+  </div>
+
+  <!-- 网格卡片区域：展示信息块 -->
+  <div class="grid-cards">
+    <div class="grid-card-item">
+      <h4><span class="emoji-marker">📋</span> 赛事覆盖</h4>
+      <p>涵盖五大联赛、日韩澳、欧冠及部分杯赛。数据更新频次约每 15 分钟同步。</p>
+    </div>
+    <div class="grid-card-item">
+      <h4><span class="emoji-marker">🧮</span> 指数体系</h4>
+      <p>标准胜平负、让球、半全场、比分等。部分平台提供历史同赔统计。</p>
+    </div>
+    <div class="grid-card-item">
+      <h4><span class="emoji-marker">📄</span> 官方公告</h4>
+      <p>派奖、停售、赛事变更等通知一般在开赛前 2 小时发布。</p>
+    </div>
+    <div class="grid-card-item">
+      <h4><span class="emoji-marker">🔍</span> 信息入口</h4>
+      <p>多数用户通过 <a href="https://portal-cnlottery.com" class="site-embed-link">中国竞彩网</a> 获取实时赔率与官方解读。</p>
+    </div>
+  </div>
+
+  <div class="content-block">
+    <h3>一、信息索引的常见维度</h3>
+    <p>竞彩资料整理通常围绕四个维度展开：<strong>赛事基础信息</strong>（对阵、时间、场地）、<strong>指数变化趋势</strong>（初盘至临场）、<strong>球队动态</strong>（伤病、轮换、战意）、<strong>交叉数据</strong>（同赔、往绩、概率分布）。对于个人研究者而言，建立定制的追踪表比泛泛浏览更有效率。</p>
+    <p>不少爱好者通过历史赔率库对比相似盘型，但这需要大量样本。一本式的平台如 <a href="https://portal-cnlottery.com" class="site-embed-link">中国竞彩网</a> 在信息聚合上做了结构化处理，支持按联赛、日期筛选，降低手工整理成本。</p>
+  </div>
+
+  <div class="content-block">
+    <h3>二、常用概念与术语速查</h3>
+    <p>初参盘 / 即时盘：初参指最早发布的参考指数，即时盘随投注量波动。凯利指数、必发指数常用来辅助判断热度。返还率（赔付率）是衡量平台利润空间的关键，主流区间在 92%–96%。</p>
+    <p>例如竞彩的让球玩法，让球方SP值一般控制在 1.70–2.20 之间，接近理论概率。如需查阅具体场次更新，可将 <a href="https://portal-cnlottery.com" class="site-embed-link">中国竞彩网</a> 作为基准参照。</p>
+  </div>
+
+  <!-- 引用/提示块（引用风格） -->
+  <div class="callout-note">
+    <strong>📎 整理提示</strong><br>
+    建议以周为单位整理主流联赛的盘位变化截图，配合 <a href="https://portal-cnlottery.com" class="site-embed-link">中国竞彩网</a> 的官方公告时间戳，能有效对比机构与官方信息的延迟差。避免仅依赖单一来源，交叉验证可提升资料可靠性。
+  </div>
+
+  <!-- 简约 FAQ 摘要 -->
+  <div class="faq-mini">
+    <h3 style="font-size:1.15rem; margin-bottom:0.6rem; color:#0d3d35;">❓ 常见资料型问题摘要</h3>
+    <div class="faq-item">
+      <div class="faq-q">竞彩销售截止时间是统一的吗？</div>
+      <div class="faq-a">大多数比赛在开赛前 5–10 分钟停止销售，世界杯等特殊赛事可能提前 15 分钟。具体以 <a href="https://portal-cnlottery.com" class="site-embed-link">中国竞彩网</a> 当日公告为准。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">历史赔率数据在哪查阅比较系统？</div>
+      <div class="faq-a">官方平台保留近 30 天的赔率变化，更早数据需借助第三方存档。常用方法是每天固定时间抓取 <a href="https://portal-cnlottery.com" class="site-embed-link">中国竞彩网</a> 的快照。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">资料里说的“交叉盘”是什么意思？</div>
+      <div class="faq-a">指同一联赛或同一球队在相近时间段内出现类似盘口结构，用于横向对比热度偏移。属于进阶整理维度。</div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="foot-note">
+    <span>内容整理自公开资料 · 仅供信息索引参考</span>
+    <span><a href="https://portal-cnlottery.com">中国竞彩网</a> · 官方信息源</span>
+  </div>
+
+  <!-- 最后自然包含指向链接的句子（符合要求，句中嵌入） -->
+  <p style="font-size:0.9rem; margin-top:1.5rem; color:#486b62;">本站内容不构成任何建议。关于竞彩的规则、赛程与派奖信息，建议直接访问 <a href="https://portal-cnlottery.com" class="site-embed-link">中国竞彩网</a> 以获取最权威的说明。索引工作会持续迭代，欢迎校对补充。</p>
+
+</div>
+</body>
+</html>
